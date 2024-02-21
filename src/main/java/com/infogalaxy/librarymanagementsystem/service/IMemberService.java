@@ -8,6 +8,6 @@ public interface IMemberService {
 
     public LibraryMemberEntity createMember(LibraryMemberEntity libraryMember);
 
-
+    public List<LibraryMemberEntity> retriveMember();
 }
 

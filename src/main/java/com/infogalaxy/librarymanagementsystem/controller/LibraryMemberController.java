@@ -24,4 +24,8 @@ public class LibraryMemberController {
     return memberService.createMember(libraryMemberEntity);
     }
 
+    @GetMapping("/retriveMember")
+    public List<LibraryMemberEntity> retriveMember(){
+        return memberService.retriveMember();
+    }
 }
