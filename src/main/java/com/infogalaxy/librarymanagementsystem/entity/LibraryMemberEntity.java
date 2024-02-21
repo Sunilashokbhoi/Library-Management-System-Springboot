@@ -1,48 +1,26 @@
 package com.infogalaxy.librarymanagementsystem.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="librarymemberentity")
 public class LibraryMemberEntity {
+    @Id
+    private int memberid;
 
-    private int memberId;
+    private String membername;
 
-    private String memberName;
+    private String membermbno;
 
-    private int memberMbno;
+    private String memberemail;
 
-    private String memberCity;
+    private String membercity;
 
 //create a getter Setter method for entity class
-
-    public int getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
-
-    public String getMemberName() {
-        return memberName;
-    }
-
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
-
-    public int getMemberMbno() {
-        return memberMbno;
-    }
-
-    public void setMemberMbno(int memberMbno) {
-        this.memberMbno = memberMbno;
-    }
-
-    public String getMemberCity() {
-        return memberCity;
-    }
-
-    public void setMemberCity(String memberCity) {
-        this.memberCity = memberCity;
-    }
 
 
 
