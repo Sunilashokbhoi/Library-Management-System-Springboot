@@ -28,4 +28,9 @@ public class LibraryMemberController {
     public List<LibraryMemberEntity> retriveMember(){
         return memberService.retriveMember();
     }
+
+    @GetMapping("/retrivememberbyid/{id}")
+    public LibraryMemberEntity retriveMemberbyid(@PathVariable ("id") int id){
+        return memberService.retriveMemberbyid(id);
+    }
 }
