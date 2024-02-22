@@ -28,4 +28,11 @@ public class MemberService implements IMemberService {
         return iMemberRepo.findById(id).get();
     }
 
+    @Override
+    public String deleteMemberbyid(int id) {
+
+        iMemberRepo.deleteById(id);
+        return "Member Data Deleted By ID Successfully..";
+    }
+
 }

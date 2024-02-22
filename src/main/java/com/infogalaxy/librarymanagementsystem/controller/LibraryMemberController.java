@@ -33,4 +33,12 @@ public class LibraryMemberController {
     public LibraryMemberEntity retriveMemberbyid(@PathVariable ("id") int id){
         return memberService.retriveMemberbyid(id);
     }
+/** it is function is used to deleted book entry by givin id in database
+ *   in this url */
+
+    @DeleteMapping("/deletememberbyid/{id}")
+    public String deleteMemberbyid(@PathVariable("id") int id){
+        return memberService.deleteMemberbyid(id);
+    }
+
 }

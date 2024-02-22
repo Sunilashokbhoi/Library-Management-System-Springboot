@@ -11,5 +11,6 @@ public interface IMemberService {
     public List<LibraryMemberEntity> retriveMember();
 
     public LibraryMemberEntity retriveMemberbyid(int id);
-}
 
+    public String deleteMemberbyid(int id);
+}
