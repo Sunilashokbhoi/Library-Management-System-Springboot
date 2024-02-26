@@ -79,11 +79,11 @@ public class LibraryMemberController {
      *  API to Update existing member data in database with the help of member ID
      * @param id - Find the Member Data By the given ID
      * @param libraryMemberEntity - Object of LibraryMemberEntity
-     * @return - LibraryMemnerEntity Object Return
+     * @return - Custom response Updated object with response data
      */
 
     @PutMapping("/updatememberbyid/{id}")
-    public LibraryMemberEntity updateMemberById(@PathVariable("id")int id,@RequestBody LibraryMemberEntity libraryMemberEntity){
-        return memberService.updateMemberById(id,libraryMemberEntity);
+    public ResponseEntity<?> updateMemberById(@PathVariable("id")int id,@RequestBody LibraryMemberEntity libraryMemberEntity){
+        return new ResponseEntity<>(new Responses("Update Member Data Successfully..",HttpStatus.ACCEPTED,memberService.updateMemberById(id,libraryMemberEntity)),HttpStatus.ACCEPTED) ;
     }
 }
