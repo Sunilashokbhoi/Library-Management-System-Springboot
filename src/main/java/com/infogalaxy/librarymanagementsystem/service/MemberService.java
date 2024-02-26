@@ -1,11 +1,13 @@
 package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.LibraryMemberEntity;
+import com.infogalaxy.librarymanagementsystem.exception.MemberNotFounfException;
 import com.infogalaxy.librarymanagementsystem.repo.IMemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService implements IMemberService {
@@ -42,8 +44,12 @@ public class MemberService implements IMemberService {
      * @return  Find the Member Data By the given ID
      */
     @Override
-    public LibraryMemberEntity retriveMemberbyid(int id) {
-        return iMemberRepo.findById(id).get();
+    public Optional<LibraryMemberEntity> retriveMemberbyid(int id) {
+    Optional<LibraryMemberEntity> libraryMemberEntity = iMemberRepo.findById(id);
+         if (libraryMemberEntity.isPresent()){
+             return libraryMemberEntity;
+         }
+        throw new MemberNotFounfException("Member Are Not Found");
     }
 
     /**

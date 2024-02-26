@@ -3,6 +3,7 @@ package com.infogalaxy.librarymanagementsystem.service;
 import com.infogalaxy.librarymanagementsystem.entity.LibraryMemberEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * IMemberService Interface is used to Declare the Library Member Functions
@@ -14,7 +15,7 @@ public interface IMemberService {
 
     public List<LibraryMemberEntity> retriveMember();
 
-    public LibraryMemberEntity retriveMemberbyid(int id);
+    public Optional<LibraryMemberEntity> retriveMemberbyid(int id);
 
     public String deleteMemberbyid(int id);
     
