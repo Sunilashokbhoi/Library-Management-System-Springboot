@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ *  GlobalExceptionHandler can generate an appropriate error message
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
    @ExceptionHandler(MemberNotFounfException.class)
     public ResponseEntity<?> memberNotFoundById(MemberNotFounfException Ex){
     return new ResponseEntity<>(new Responses("Member with Given ID Not Found in Database..", HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
