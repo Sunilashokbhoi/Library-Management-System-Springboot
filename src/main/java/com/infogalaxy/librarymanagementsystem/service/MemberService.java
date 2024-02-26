@@ -32,7 +32,7 @@ public class MemberService implements IMemberService {
      * @return List - List of LibraryMemberEntity Objects
      */
     @Override
-    public List<LibraryMemberEntity> retriveMember() {
+    public List<LibraryMemberEntity> retriveMember()     {
         return iMemberRepo.findAll();
     }
 

@@ -1,8 +1,11 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.LibraryMemberEntity;
+import com.infogalaxy.librarymanagementsystem.responses.Responses;
 import com.infogalaxy.librarymanagementsystem.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,12 +34,12 @@ public class LibraryMemberController {
     /**
      * API to create Member Data in Database
      * @param libraryMemberEntity - Object Of LibraryMemberEntity
-     * @return - LibraryMemberEntity Object
+     * @return - Custome Responses -  Custom Response object with response data
      */
 
     @PostMapping("/createmember")
-    public LibraryMemberEntity createMember(@RequestBody LibraryMemberEntity libraryMemberEntity){
-    return memberService.createMember(libraryMemberEntity);
+    public ResponseEntity<?> createMember(@RequestBody LibraryMemberEntity libraryMemberEntity){
+    return new ResponseEntity<>(new Responses("Created Member Data", HttpStatus.CREATED,memberService.createMember(libraryMemberEntity)),HttpStatus.CREATED);
     }
 
     /**
