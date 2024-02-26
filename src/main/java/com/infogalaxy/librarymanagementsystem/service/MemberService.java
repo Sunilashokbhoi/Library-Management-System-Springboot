@@ -53,6 +53,7 @@ public class MemberService implements IMemberService {
      */
     @Override
     public String deleteMemberbyid(int id) {
+        LibraryMemberEntity libraryMemberEntity = iMemberRepo.findById(id).get();
         iMemberRepo.deleteById(id);
         return "Member Data Deleted By ID Successfully..";
     }

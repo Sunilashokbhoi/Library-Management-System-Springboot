@@ -44,7 +44,7 @@ public class LibraryMemberController {
 
     /**
      * API to retrieve all member Data in Databse
-     * @return LibraryMemnerEntity Object Return
+     * @return Custome Responses List Of Objects
      */
 
     @GetMapping("/retriveMember")
@@ -55,7 +55,7 @@ public class LibraryMemberController {
     /**
      * API to Retrieve the existing Member Data from Database with the help of Member ID
      * @param id -  Find the Member Data By the given ID
-     * @return  LibraryMemnerEntity Object Return
+     * @return  Custome Responses object with Response Data
      */
 
     @GetMapping("/retrivememberbyid/{id}")
@@ -66,12 +66,13 @@ public class LibraryMemberController {
     /**
      *  API to Delete existing Member Data from Database with the help of Member ID
      *   @param id - Find the Member Data By the given ID
+     *   @return - Response message of Deletion
      */
 
 
     @DeleteMapping("/deletememberbyid/{id}")
-    public String deleteMemberbyid(@PathVariable("id") int id){
-        return memberService.deleteMemberbyid(id);
+    public ResponseEntity<?> deleteMemberbyid(@PathVariable("id") int id){
+        return new ResponseEntity<>(new Responses("Deleted Member Data Successfully...",HttpStatus.ACCEPTED, memberService.deleteMemberbyid(id)),HttpStatus.ACCEPTED);
     }
 
     /**
