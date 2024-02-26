@@ -48,8 +48,8 @@ public class LibraryMemberController {
      */
 
     @GetMapping("/retriveMember")
-    public List<LibraryMemberEntity> retriveMember(){
-        return memberService.retriveMember();
+    public ResponseEntity<?> retriveMember(){
+        return new ResponseEntity<>(new Responses("Retrive All Data Members ",HttpStatus.FOUND, memberService.retriveMember()),HttpStatus.FOUND);
     }
 
     /**
@@ -59,8 +59,8 @@ public class LibraryMemberController {
      */
 
     @GetMapping("/retrivememberbyid/{id}")
-    public LibraryMemberEntity retriveMemberbyid(@PathVariable ("id") int id){
-        return memberService.retriveMemberbyid(id);
+    public ResponseEntity<?> retriveMemberbyid(@PathVariable ("id") int id){
+        return new ResponseEntity<>(new Responses("Member Data Found By Given ID",HttpStatus.FOUND,memberService.retriveMemberbyid(id)),HttpStatus.FOUND);
     }
 
     /**
