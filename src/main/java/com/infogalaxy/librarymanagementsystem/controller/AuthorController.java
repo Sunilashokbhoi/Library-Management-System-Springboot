@@ -2,8 +2,11 @@ package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
 import com.infogalaxy.librarymanagementsystem.repo.IAuthorRepo;
+import com.infogalaxy.librarymanagementsystem.responses.Responses;
 import com.infogalaxy.librarymanagementsystem.service.IAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,7 +32,7 @@ public class AuthorController {
      * @return- authorentity object
      */
     @PostMapping("/createauthor")
-    public AuthorEntity createauthor(@RequestBody AuthorEntity authorEntity){
-        return authorService.createauthor(authorEntity);
+    public ResponseEntity<?> createauthor(@RequestBody AuthorEntity authorEntity){
+        return new ResponseEntity<>(new Responses("Created Authod Data Successfully...", HttpStatus.CREATED,authorService.createauthor(authorEntity)),HttpStatus.CREATED);
     }
 }
