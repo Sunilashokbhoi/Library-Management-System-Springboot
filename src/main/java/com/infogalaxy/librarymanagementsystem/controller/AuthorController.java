@@ -44,4 +44,8 @@ public class AuthorController {
     public ResponseEntity<?> retrieveallauthors(){
         return new ResponseEntity<>(new Responses("Retrieve All Authors Successfully...",HttpStatus.FOUND,authorService.retrieveallauthors()),HttpStatus.FOUND);
     }
+    @GetMapping("retrieveauthorbyid/{id}")
+    public AuthorEntity retrieveauthorbyid(@PathVariable("id")int id){
+        return authorService.retrieveauthorbyid(id);
+    }
 }

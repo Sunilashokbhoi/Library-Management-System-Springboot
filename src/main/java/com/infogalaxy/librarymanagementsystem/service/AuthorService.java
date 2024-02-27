@@ -2,6 +2,7 @@ package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
 import com.infogalaxy.librarymanagementsystem.repo.IAuthorRepo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,11 @@ public class AuthorService implements IAuthorService{
     @Override
     public List<AuthorEntity> retrieveallauthors() {
         return authorRepo.findAll();
+    }
+
+    @Override
+    public AuthorEntity retrieveauthorbyid(int id) {
+        AuthorEntity authorEntity = authorRepo.findById(id).get();
+        return authorEntity;
     }
 }
