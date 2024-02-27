@@ -90,12 +90,3 @@ public class MemberService implements IMemberService {
         }
     }
 }
-
-
-//        LibraryMemberEntity oldmember = iMemberRepo.findById(id).get();
-//        oldmember.setMembername(libraryMemberEntity.getMembername());
-//        oldmember.setMembermbno(libraryMemberEntity.getMembermbno());
-//        oldmember.setMemberemail(libraryMemberEntity.getMemberemail());
-//        oldmember.setMembercity(libraryMemberEntity.getMembercity());
-//        iMemberRepo.save(oldmember);
-//        return oldmember;
