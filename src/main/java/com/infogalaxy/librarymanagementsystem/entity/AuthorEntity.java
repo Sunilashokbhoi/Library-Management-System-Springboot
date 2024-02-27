@@ -7,10 +7,10 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name ="librarymemberentity")
+@Table(name="authorentity")
 public class AuthorEntity {
     @Id
-    private int authirid;
+    private int authorid;
     private String authorname;
     private String authorcountry;
 }
