@@ -27,4 +27,11 @@ public class AuthorService implements IAuthorService{
         AuthorEntity authorEntity = authorRepo.findById(id).get();
         return authorEntity;
     }
+
+    @Override
+    public AuthorEntity updateauthorbyid(int id, AuthorEntity authorEntity) {
+        AuthorEntity authornew = authorRepo.findById(id).get();
+        BeanUtils.copyProperties(authorEntity,authornew);
+        return authorRepo.save(authorEntity);
+    }
 }

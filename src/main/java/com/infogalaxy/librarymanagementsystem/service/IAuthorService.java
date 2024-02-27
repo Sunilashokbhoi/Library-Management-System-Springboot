@@ -11,5 +11,8 @@ public interface IAuthorService {
     public List<AuthorEntity> retrieveallauthors();
 
 
-    AuthorEntity retrieveauthorbyid(int id);
+    public AuthorEntity retrieveauthorbyid(int id);
+
+    public AuthorEntity updateauthorbyid(int id,AuthorEntity authorEntity);
+
 }

@@ -48,4 +48,8 @@ public class AuthorController {
     public AuthorEntity retrieveauthorbyid(@PathVariable("id")int id){
         return authorService.retrieveauthorbyid(id);
     }
+    @PutMapping("updateauthorbyid/{id}")
+    public AuthorEntity updateauthorbyid(@PathVariable("id")int id,@RequestBody AuthorEntity authorEntity){
+        return authorService.updateauthorbyid(id,authorEntity);
+    }
 }
