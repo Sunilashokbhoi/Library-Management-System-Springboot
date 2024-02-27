@@ -29,10 +29,19 @@ public class AuthorController {
     /**
      * API to create Author Data in Database
      * @param authorEntity - Object of a AuthorEntity
-     * @return- authorentity object
+     * @return- Custome Responses -  Custom Response object with response data
      */
     @PostMapping("/createauthor")
     public ResponseEntity<?> createauthor(@RequestBody AuthorEntity authorEntity){
         return new ResponseEntity<>(new Responses("Created Authod Data Successfully...", HttpStatus.CREATED,authorService.createauthor(authorEntity)),HttpStatus.CREATED);
+    }
+
+    /**
+     * API to retrieve all authors Data in Databse
+     * @return- Custome Responses List Of Objects
+     */
+    @GetMapping("/retriveallauthors")
+    public ResponseEntity<?> retrieveallauthors(){
+        return new ResponseEntity<>(new Responses("Retrieve All Authors Successfully...",HttpStatus.FOUND,authorService.retrieveallauthors()),HttpStatus.FOUND);
     }
 }
