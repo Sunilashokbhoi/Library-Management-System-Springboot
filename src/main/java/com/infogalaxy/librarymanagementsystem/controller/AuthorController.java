@@ -47,13 +47,13 @@ public class AuthorController {
     }
 
     @GetMapping("retrieveauthorbyid/{id}")
-    public Optional<AuthorEntity> retrieveauthorbyid(@PathVariable("id")int id){
-        return authorService.retrieveauthorbyid(id);
+    public ResponseEntity<?> retrieveauthorbyid(@PathVariable("id")int id){
+        return new ResponseEntity<>(new GlobalResponses("Author Retrieve By Given Id In Database..",HttpStatus.ACCEPTED,authorService.retrieveauthorbyid(id)),HttpStatus.ACCEPTED) ;
     }
 
     @PutMapping("updateauthorbyid/{id}")
-    public AuthorEntity updateauthorbyid(@PathVariable("id")int id,@RequestBody AuthorEntity authorEntity){
-        return authorService.updateauthorbyid(id,authorEntity);
+    public ResponseEntity<?> updateauthorbyid(@PathVariable("id")int id,@RequestBody AuthorEntity authorEntity){
+        return new ResponseEntity<>(new GlobalResponses("Author Are Update Given By Id.",HttpStatus.FOUND, authorService.updateauthorbyid(id,authorEntity)),HttpStatus.FOUND);
     }
 
     @DeleteMapping("deleteauthorbyid/{id}")

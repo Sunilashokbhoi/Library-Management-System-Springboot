@@ -46,8 +46,12 @@ public class AuthorService implements IAuthorService{
     }
     @Override
     public String deletauthorbyid(int id) {
-        AuthorEntity authorEntity = authorRepo.findById(id).get();
-        authorRepo.deleteById(id);
-        return "Deleted Author Data By Given Id";
+        Optional<AuthorEntity> authorEntity = authorRepo.findById(id);
+        if (authorEntity.isPresent()) {
+            authorRepo.deleteById(id);
+            return "Deleted Author Data By Given Id";
+        }else {
+            throw new AuthorNotFoundException("Author Are Not Found In Database");
+        }
     }
 }
