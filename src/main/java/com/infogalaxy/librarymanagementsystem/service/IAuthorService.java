@@ -3,6 +3,7 @@ package com.infogalaxy.librarymanagementsystem.service;
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IAuthorService {
 
@@ -11,7 +12,7 @@ public interface IAuthorService {
     public List<AuthorEntity> retrieveallauthors();
 
 
-    public AuthorEntity retrieveauthorbyid(int id);
+    public Optional<AuthorEntity> retrieveauthorbyid(int id);
 
     public AuthorEntity updateauthorbyid(int id,AuthorEntity authorEntity);
 

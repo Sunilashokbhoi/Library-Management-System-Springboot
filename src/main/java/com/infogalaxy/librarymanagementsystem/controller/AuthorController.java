@@ -47,7 +47,7 @@ public class AuthorController {
     }
 
     @GetMapping("retrieveauthorbyid/{id}")
-    public AuthorEntity retrieveauthorbyid(@PathVariable("id")int id){
+    public Optional<AuthorEntity> retrieveauthorbyid(@PathVariable("id")int id){
         return authorService.retrieveauthorbyid(id);
     }
 

@@ -16,4 +16,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> memberNotFoundById(MemberNotFounfException Ex){
     return new ResponseEntity<>(new GlobalResponses("Member with Given ID Not Found in Database..", HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
    }
+
+   @ExceptionHandler(AuthorNotFoundException.class)
+    public ResponseEntity<?> authorNotFoundById(AuthorNotFoundException aEX){
+       return new ResponseEntity<>(new GlobalResponses("Author With Given Id Not Found in Database..",HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
+   }
 }
