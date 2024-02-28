@@ -1,14 +1,12 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.LibraryMemberEntity;
-import com.infogalaxy.librarymanagementsystem.responses.Responses;
+import com.infogalaxy.librarymanagementsystem.responses.GlobalResponses;
 import com.infogalaxy.librarymanagementsystem.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("member/api")
@@ -39,7 +37,7 @@ public class LibraryMemberController {
 
     @PostMapping("/createmember")
     public ResponseEntity<?> createMember(@RequestBody LibraryMemberEntity libraryMemberEntity){
-    return new ResponseEntity<>(new Responses("Created Member Data", HttpStatus.CREATED,memberService.createMember(libraryMemberEntity)),HttpStatus.CREATED);
+    return new ResponseEntity<>(new GlobalResponses("Created Member Data", HttpStatus.CREATED,memberService.createMember(libraryMemberEntity)),HttpStatus.CREATED);
     }
 
     /**
@@ -49,7 +47,7 @@ public class LibraryMemberController {
 
     @GetMapping("/retriveMember")
     public ResponseEntity<?> retriveMember(){
-        return new ResponseEntity<>(new Responses("Retrive All Data Members ",HttpStatus.FOUND, memberService.retriveMember()),HttpStatus.FOUND);
+        return new ResponseEntity<>(new GlobalResponses("Retrive All Data Members ",HttpStatus.FOUND, memberService.retriveMember()),HttpStatus.FOUND);
     }
 
     /**
@@ -60,7 +58,7 @@ public class LibraryMemberController {
 
     @GetMapping("/retrivememberbyid/{id}")
     public ResponseEntity<?> retriveMemberbyid(@PathVariable ("id") int id){
-        return new ResponseEntity<>(new Responses("Member Data Found By Given ID",HttpStatus.FOUND,memberService.retriveMemberbyid(id)),HttpStatus.FOUND);
+        return new ResponseEntity<>(new GlobalResponses("Member Data Found By Given ID",HttpStatus.FOUND,memberService.retriveMemberbyid(id)),HttpStatus.FOUND);
     }
 
     /**
@@ -72,7 +70,7 @@ public class LibraryMemberController {
 
     @DeleteMapping("/deletememberbyid/{id}")
     public ResponseEntity<?> deleteMemberbyid(@PathVariable("id") int id){
-        return new ResponseEntity<>(new Responses("Deleted Member Data Successfully...",HttpStatus.ACCEPTED, memberService.deleteMemberbyid(id)),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new GlobalResponses("Deleted Member Data Successfully...",HttpStatus.ACCEPTED, memberService.deleteMemberbyid(id)),HttpStatus.ACCEPTED);
     }
 
     /**
@@ -84,6 +82,6 @@ public class LibraryMemberController {
 
     @PutMapping("/updatememberbyid/{id}")
     public ResponseEntity<?> updateMemberById(@PathVariable("id")int id,@RequestBody LibraryMemberEntity libraryMemberEntity){
-        return new ResponseEntity<>(new Responses("Update Member Data Successfully..",HttpStatus.ACCEPTED,memberService.updateMemberById(id,libraryMemberEntity)),HttpStatus.ACCEPTED) ;
+        return new ResponseEntity<>(new GlobalResponses("Update Member Data Successfully..",HttpStatus.ACCEPTED,memberService.updateMemberById(id,libraryMemberEntity)),HttpStatus.ACCEPTED) ;
     }
 }

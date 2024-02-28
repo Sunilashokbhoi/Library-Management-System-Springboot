@@ -1,13 +1,14 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
-import com.infogalaxy.librarymanagementsystem.repo.IAuthorRepo;
-import com.infogalaxy.librarymanagementsystem.responses.Responses;
+import com.infogalaxy.librarymanagementsystem.responses.GlobalResponses;
 import com.infogalaxy.librarymanagementsystem.service.IAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 /**
  * Create Controller Class for Author Request And Response Handle
@@ -33,7 +34,7 @@ public class AuthorController {
      */
     @PostMapping("/createauthor")
     public ResponseEntity<?> createauthor(@RequestBody AuthorEntity authorEntity){
-        return new ResponseEntity<>(new Responses("Created Authod Data Successfully...", HttpStatus.CREATED,authorService.createauthor(authorEntity)),HttpStatus.CREATED);
+        return new ResponseEntity<>(new GlobalResponses("Created Authod Data Successfully...", HttpStatus.CREATED,authorService.createauthor(authorEntity)),HttpStatus.CREATED);
     }
 
     /**
@@ -42,8 +43,9 @@ public class AuthorController {
      */
     @GetMapping("/retriveallauthors")
     public ResponseEntity<?> retrieveallauthors(){
-        return new ResponseEntity<>(new Responses("Retrieve All Authors Successfully...",HttpStatus.FOUND,authorService.retrieveallauthors()),HttpStatus.FOUND);
+        return new ResponseEntity<>(new GlobalResponses("Retrieve All Authors Successfully...",HttpStatus.FOUND,authorService.retrieveallauthors()),HttpStatus.FOUND);
     }
+
     @GetMapping("retrieveauthorbyid/{id}")
     public AuthorEntity retrieveauthorbyid(@PathVariable("id")int id){
         return authorService.retrieveauthorbyid(id);
@@ -53,9 +55,9 @@ public class AuthorController {
     public AuthorEntity updateauthorbyid(@PathVariable("id")int id,@RequestBody AuthorEntity authorEntity){
         return authorService.updateauthorbyid(id,authorEntity);
     }
-    
+
     @DeleteMapping("deleteauthorbyid/{id}")
     public ResponseEntity<?> deletauthorbyid(@PathVariable("id") int id){
-       return new ResponseEntity<>(new Responses("Deleted Author By Given Id",HttpStatus.ACCEPTED,authorService.deletauthorbyid(id)),HttpStatus.ACCEPTED);
+       return new ResponseEntity<>(new GlobalResponses("Deleted Author By Given Id",HttpStatus.ACCEPTED,authorService.deletauthorbyid(id)),HttpStatus.ACCEPTED);
     }
 }
