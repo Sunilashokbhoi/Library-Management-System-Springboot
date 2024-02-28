@@ -33,13 +33,17 @@ public class AuthorService implements IAuthorService{
         throw new AuthorNotFoundException("Author with Given Id Not Found In Database");
         }
     }
+
     @Override
     public AuthorEntity updateauthorbyid(int id, AuthorEntity authorEntity) {
-        AuthorEntity authornew = authorRepo.findById(id).get();
-        BeanUtils.copyProperties(authorEntity,authornew);
-        return authorRepo.save(authorEntity);
+        Optional<AuthorEntity> authornew = authorRepo.findById(id);
+        if (authornew.isPresent()) {
+            BeanUtils.copyProperties(authorEntity, authornew);
+            return authorRepo.save(authorEntity);
+        }else {
+            throw new AuthorNotFoundException("Author Not Found Given Id inDatabase");
+        }
     }
-
     @Override
     public String deletauthorbyid(int id) {
         AuthorEntity authorEntity = authorRepo.findById(id).get();
