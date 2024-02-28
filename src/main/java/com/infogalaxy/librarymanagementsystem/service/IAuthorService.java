@@ -15,4 +15,6 @@ public interface IAuthorService {
 
     public AuthorEntity updateauthorbyid(int id,AuthorEntity authorEntity);
 
+    public String deletauthorbyid(int id);
+
 }

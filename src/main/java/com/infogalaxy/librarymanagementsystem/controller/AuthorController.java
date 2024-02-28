@@ -48,8 +48,14 @@ public class AuthorController {
     public AuthorEntity retrieveauthorbyid(@PathVariable("id")int id){
         return authorService.retrieveauthorbyid(id);
     }
+
     @PutMapping("updateauthorbyid/{id}")
     public AuthorEntity updateauthorbyid(@PathVariable("id")int id,@RequestBody AuthorEntity authorEntity){
         return authorService.updateauthorbyid(id,authorEntity);
+    }
+    
+    @DeleteMapping("deleteauthorbyid/{id}")
+    public ResponseEntity<?> deletauthorbyid(@PathVariable("id") int id){
+       return new ResponseEntity<>(new Responses("Deleted Author By Given Id",HttpStatus.ACCEPTED,authorService.deletauthorbyid(id)),HttpStatus.ACCEPTED);
     }
 }
