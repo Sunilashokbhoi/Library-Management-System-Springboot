@@ -33,7 +33,6 @@ public class AuthorService implements IAuthorService{
         throw new AuthorNotFoundException("Author with Given Id Not Found In Database");
         }
     }
-
     @Override
     public AuthorEntity updateauthorbyid(int id, AuthorEntity authorEntity) {
         Optional<AuthorEntity> authornew = authorRepo.findById(id);

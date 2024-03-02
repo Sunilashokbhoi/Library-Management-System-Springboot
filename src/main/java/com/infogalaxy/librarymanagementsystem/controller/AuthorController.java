@@ -1,8 +1,8 @@
 package com.infogalaxy.librarymanagementsystem.controller;
-
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
 import com.infogalaxy.librarymanagementsystem.responses.GlobalResponses;
 import com.infogalaxy.librarymanagementsystem.service.IAuthorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ public class AuthorController {
      * @return- Custome Responses -  Custom Response object with response data
      */
     @PostMapping("/createauthor")
-    public ResponseEntity<?> createauthor(@RequestBody AuthorEntity authorEntity){
+    public ResponseEntity<?> createauthor(@RequestBody @Valid AuthorEntity authorEntity){
         return new ResponseEntity<>(new GlobalResponses("Created Authod Data Successfully...", HttpStatus.CREATED,authorService.createauthor(authorEntity)),HttpStatus.CREATED);
     }
 
