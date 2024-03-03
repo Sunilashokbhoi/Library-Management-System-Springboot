@@ -1,8 +1,11 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
+import com.infogalaxy.librarymanagementsystem.responses.GlobalResponses;
 import com.infogalaxy.librarymanagementsystem.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +20,12 @@ public class BookController {
     }
 
     @PostMapping("createbook")
-    public BookEntity createbook(@RequestBody BookEntity bookEntity){
-        return bookService.createbook(bookEntity);
+    public ResponseEntity<?> createbook(@RequestBody BookEntity bookEntity){
+        return new ResponseEntity<>(new GlobalResponses("Book Created Successfully  ", HttpStatus.CREATED,bookService.createbook(bookEntity)),HttpStatus.CREATED) ;
+    }
+
+    @GetMapping("retrieveallbooks")
+    public ResponseEntity<?> retrieveallbooks(){
+        return new ResponseEntity<>(new GlobalResponses("Retrieve All Books Successfully ..",HttpStatus.FOUND,bookService.retrieveallbooks()),HttpStatus.FOUND);
     }
 }
