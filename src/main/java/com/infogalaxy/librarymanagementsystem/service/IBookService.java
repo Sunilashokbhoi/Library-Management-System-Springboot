@@ -8,5 +8,7 @@ public interface IBookService {
     public BookEntity createbook(BookEntity bookEntity);
 
     public List<BookEntity> retrieveallbooks();
+
+    public BookEntity retrievebookbyid(int id);
 }
 

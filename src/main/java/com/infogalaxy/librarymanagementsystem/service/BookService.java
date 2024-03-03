@@ -21,4 +21,10 @@ public class BookService implements IBookService{
     public List<BookEntity> retrieveallbooks() {
         return bookRepo.findAll();
     }
+
+    @Override
+    public BookEntity retrievebookbyid(int id) {
+        BookEntity bookEntity = bookRepo.findById(id).get();
+        return bookEntity;
+    }
 }

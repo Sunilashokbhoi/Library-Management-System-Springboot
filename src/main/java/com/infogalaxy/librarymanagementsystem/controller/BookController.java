@@ -1,5 +1,6 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
+import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
 import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
 import com.infogalaxy.librarymanagementsystem.responses.GlobalResponses;
 import com.infogalaxy.librarymanagementsystem.service.BookService;
@@ -27,5 +28,9 @@ public class BookController {
     @GetMapping("retrieveallbooks")
     public ResponseEntity<?> retrieveallbooks(){
         return new ResponseEntity<>(new GlobalResponses("Retrieve All Books Successfully ..",HttpStatus.FOUND,bookService.retrieveallbooks()),HttpStatus.FOUND);
+    }
+    @GetMapping("/retrievebookbyid/{id}")
+    public ResponseEntity<?> retrievebookbyid(@PathVariable("id") int id){
+        return new ResponseEntity<>(new GlobalResponses("Retrive Book Given By Id Successfully..",HttpStatus.ACCEPTED,bookService.retrievebookbyid(id)),HttpStatus.ACCEPTED);
     }
 }
