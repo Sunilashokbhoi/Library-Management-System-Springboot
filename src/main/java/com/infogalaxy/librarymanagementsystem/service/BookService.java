@@ -36,4 +36,11 @@ public class BookService implements IBookService{
       return bookRepo.save(bookEntitynew);
 
     }
+
+    @Override
+    public String deletebookbyid(int id) {
+        BookEntity bookentity = bookRepo.findById(id).get();
+        bookRepo.delete(bookentity);
+        return "Deleted By Given Id Successfully...";
+    }
 }

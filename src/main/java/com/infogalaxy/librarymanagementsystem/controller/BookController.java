@@ -37,4 +37,9 @@ public class BookController {
     public ResponseEntity<?> updatebookbyid(@PathVariable ("id") int id,@RequestBody BookEntity bookEntity){
         return new ResponseEntity<>(new GlobalResponses("Update Book By Given Id Successfully...",HttpStatus.FOUND,bookService.updatebookbyid(id,bookEntity)),HttpStatus.FOUND);
     }
+
+    @DeleteMapping("deletedbookbyid/{id}")
+    public ResponseEntity<?> deletebookbyid(@PathVariable("id")int id){
+        return new ResponseEntity<>(new GlobalResponses("Delete Book By Given Id Successfully...",HttpStatus.ACCEPTED,bookService.deletebookbyid(id)),HttpStatus.ACCEPTED);
+    }
 }
