@@ -2,6 +2,7 @@ package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
 import com.infogalaxy.librarymanagementsystem.repo.IBookRepo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,13 @@ public class BookService implements IBookService{
     public BookEntity retrievebookbyid(int id) {
         BookEntity bookEntity = bookRepo.findById(id).get();
         return bookEntity;
+    }
+
+    @Override
+    public BookEntity updatebookbyid(int id, BookEntity bookEntity) {
+        BookEntity bookEntitynew = bookRepo.findById(id).get();
+      BeanUtils.copyProperties(bookEntity,bookEntitynew);
+      return bookRepo.save(bookEntitynew);
+
     }
 }

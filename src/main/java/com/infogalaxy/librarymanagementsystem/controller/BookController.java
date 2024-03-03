@@ -33,4 +33,8 @@ public class BookController {
     public ResponseEntity<?> retrievebookbyid(@PathVariable("id") int id){
         return new ResponseEntity<>(new GlobalResponses("Retrive Book Given By Id Successfully..",HttpStatus.ACCEPTED,bookService.retrievebookbyid(id)),HttpStatus.ACCEPTED);
     }
+    @PutMapping("/updatebookbyid/{id}")
+    public ResponseEntity<?> updatebookbyid(@PathVariable ("id") int id,@RequestBody BookEntity bookEntity){
+        return new ResponseEntity<>(new GlobalResponses("Update Book By Given Id Successfully...",HttpStatus.FOUND,bookService.updatebookbyid(id,bookEntity)),HttpStatus.FOUND);
+    }
 }
