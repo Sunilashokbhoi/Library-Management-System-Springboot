@@ -29,6 +29,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<?> authorNotFoundById(AuthorNotFoundException aEX){
        return new ResponseEntity<>(new GlobalResponses("Author With Given Id Not Found in Database..",HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
    }
+   @ExceptionHandler({BookNotFoundException.class})
+   public ResponseEntity<?> bookNotFoundById(BookNotFoundException bEX){
+       return new ResponseEntity<>(new GlobalResponses("Book With Given Id Not Found In Database...",HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
+   }
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
